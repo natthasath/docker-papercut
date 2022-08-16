@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  web:
+    #image: hp41/papercut-mf:latest
+    image: papercut:latest
+    container_name: papercut
+    restart: always
+    ports:
+      - 9191:9191
+      - 9192:9192
+      - 9193:9193
+    networks:
+      - default
+    volumes:
+      - data:/var/data
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
