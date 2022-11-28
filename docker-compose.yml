@@ -1,8 +1,7 @@
 version: '3.9'
 services:
   web:
-    #image: hp41/papercut-mf:latest
-    image: papercut:latest
+    image: hp41/papercut-mf:latest
     container_name: papercut
     restart: always
     ports:
