@@ -1,6 +1,6 @@
 # 🎉 Docker Papercut
 
-Print management software that’s helping hundreds of millions of people around the globe to minimize waste while having a secure and easy printing experience.
+Papercut is an open-source print management software that allows monitoring, managing, and controlling networked printers and print jobs through a web-based interface.
 
 ![version](https://img.shields.io/badge/version-1.0-blue)
 ![rating](https://img.shields.io/badge/rating-★★★★★-yellow)
