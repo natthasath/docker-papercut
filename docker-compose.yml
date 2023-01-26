@@ -5,9 +5,9 @@ services:
     container_name: papercut
     restart: always
     ports:
-      - 9191:9191
-      - 9192:9192
-      - 9193:9193
+      - ${HTTP_PORT}:9191
+      - ${HTTPS_PORT}:9192
+      - ${RPC_PORT}:9193
     networks:
       - default
     volumes:
