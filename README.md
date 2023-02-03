@@ -6,7 +6,7 @@ Papercut is an open-source print management software that allows monitoring, man
 ![rating](https://img.shields.io/badge/rating-★★★★★-yellow)
 ![uptime](https://img.shields.io/badge/uptime-100%25-brightgreen)
 
-### 🥈 Run
+### 🏆 Run
 
 - [http://localhost:9191/](http://localhost:9191/) username : `admin` password : `admin`
 
