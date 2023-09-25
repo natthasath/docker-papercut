@@ -11,12 +11,9 @@ services:
     networks:
       - default
     volumes:
-      - data:/var/data
+      - ./data:/papercut/server/data
+      - ./log:/papercut/server/logs
 
 networks:
   default:
     driver: bridge
-
-volumes:
-  data:
-    driver: local
