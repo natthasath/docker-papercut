@@ -12,7 +12,7 @@ services:
       - default
     volumes:
       - ./data:/papercut/server/data
-      - ./log:/papercut/server/logs
+      - ./log:/papercut/server/log
 
 networks:
   default:
