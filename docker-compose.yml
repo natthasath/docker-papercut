@@ -16,4 +16,10 @@ services:
 
 networks:
   default:
+    name: docker_papercut_network
     driver: bridge
+
+volumes:
+  data:
+    name: docker_papercut_data
+    driver: local
