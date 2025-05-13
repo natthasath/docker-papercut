@@ -1,14 +1,14 @@
 services:
   papercut:
-    container_name: ${PAPERCUT_CONTAINER_NAME:-papercut_app}
-    image: ${PAPERCUT_IMAGE_NAME:-hp41/papercut-mf}:${PAPERCUT_IMAGE_VERSION:-latest}
-    restart: ${RESTART_POLICY:-always}
+    container_name: ${PAPERCUT_CONTAINER_NAME}
+    image: ${PAPERCUT_IMAGE_NAME}:${PAPERCUT_IMAGE_VERSION}
+    restart: ${RESTART_POLICY}
     environment:
-      - TZ=${TIMEZONE:-Asia/Bangkok}
+      - TZ=${TIMEZONE}
     ports:
-      - ${PAPERCUT_HTTP_PORT:-9191}:9191
-      - ${PAPERCUT_HTTPS_PORT:-9192}:9192
-      - ${PAPERCUT_RPC_PORT:-9193}:9193
+      - ${PAPERCUT_HTTP_PORT}:9191
+      - ${PAPERCUT_HTTPS_PORT}:9192
+      - ${PAPERCUT_RPC_PORT}:9193
     volumes:
       - papercut_data:/papercut/server/data
       - papercut_logs:/papercut/server/log
@@ -16,19 +16,19 @@ services:
       - default
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9191"]
-      interval: ${HEALTHCHECK_INTERVAL:-30s}
-      timeout: ${HEALTHCHECK_TIMEOUT:-10s}
-      retries: ${HEALTHCHECK_RETRIES:-3}
+      interval: ${HEALTHCHECK_INTERVAL}
+      timeout: ${HEALTHCHECK_TIMEOUT}
+      retries: ${HEALTHCHECK_RETRIES}
 
 networks:
   default:
-    name: papercut_network
+    name: ${PAPERCUT_CONTAINER_NAME}_network
     driver: bridge
 
 volumes:
   papercut_data:
-    name: papercut_data
+    name: ${PAPERCUT_CONTAINER_NAME}_data
     driver: local
   papercut_logs:
-    name: papercut_logs
+    name: ${PAPERCUT_CONTAINER_NAME}_logs
     driver: local
