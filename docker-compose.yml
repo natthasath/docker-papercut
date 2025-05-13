@@ -1,25 +1,34 @@
-version: '3.9'
 services:
-  web:
-    image: hp41/papercut-mf:latest
-    container_name: papercut
-    restart: always
+  papercut:
+    container_name: ${PAPERCUT_CONTAINER_NAME:-papercut_app}
+    image: ${PAPERCUT_IMAGE_NAME:-hp41/papercut-mf}:${PAPERCUT_IMAGE_VERSION:-latest}
+    restart: ${RESTART_POLICY:-always}
+    environment:
+      - TZ=${TIMEZONE:-Asia/Bangkok}
     ports:
-      - ${HTTP_PORT}:9191
-      - ${HTTPS_PORT}:9192
-      - ${RPC_PORT}:9193
+      - ${PAPERCUT_HTTP_PORT:-9191}:9191
+      - ${PAPERCUT_HTTPS_PORT:-9192}:9192
+      - ${PAPERCUT_RPC_PORT:-9193}:9193
+    volumes:
+      - papercut_data:/papercut/server/data
+      - papercut_logs:/papercut/server/log
     networks:
       - default
-    volumes:
-      - ./data:/papercut/server/data
-      - ./log:/papercut/server/log
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9191"]
+      interval: ${HEALTHCHECK_INTERVAL:-30s}
+      timeout: ${HEALTHCHECK_TIMEOUT:-10s}
+      retries: ${HEALTHCHECK_RETRIES:-3}
 
 networks:
   default:
-    name: docker_papercut_network
+    name: papercut_network
     driver: bridge
 
 volumes:
-  data:
-    name: docker_papercut_data
+  papercut_data:
+    name: papercut_data
+    driver: local
+  papercut_logs:
+    name: papercut_logs
     driver: local
