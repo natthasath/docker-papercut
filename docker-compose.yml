@@ -1,3 +1,5 @@
+name: ${GLOBAL_NAME}
+
 services:
   papercut:
     container_name: ${PAPERCUT_CONTAINER_NAME}
